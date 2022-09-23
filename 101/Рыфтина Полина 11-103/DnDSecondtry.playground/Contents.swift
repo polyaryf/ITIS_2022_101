@@ -39,7 +39,7 @@ class Hero: Character{
     }
     
     public func updateRate(){
-        self.rate += 5
+        self.rate += 2
     }
 }
 
