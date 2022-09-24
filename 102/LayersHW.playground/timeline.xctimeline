@@ -2,5 +2,10 @@
 <Timeline
    version = "3.0">
    <TimelineItems>
+      <LoggerValueHistoryTimelineItem
+         documentLocation = "file:///Users/polinom/Repositories/ITIS_2022_101/102/LayersHW.playground#CharacterRangeLen=0&amp;CharacterRangeLoc=2717&amp;EndingColumnNumber=45&amp;EndingLineNumber=78&amp;StartingColumnNumber=45&amp;StartingLineNumber=78&amp;Timestamp=685702681.176288"
+         selectedRepresentationIndex = "0"
+         shouldTrackSuperviewWidth = "NO">
+      </LoggerValueHistoryTimelineItem>
    </TimelineItems>
 </Timeline>

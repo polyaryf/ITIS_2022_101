@@ -55,10 +55,95 @@ layer.addSublayer(leftEarLayer)
 
 let textLayer = CATextLayer()
 textLayer.string = "С днем верстки!!!!!1!!"
-textLayer.font = UIFont.italicSystemFont(ofSize: 20)
+textLayer.font = UIFont.systemFont(ofSize: 20)
 textLayer.foregroundColor = UIColor.purple.cgColor
-textLayer.frame = CGRect(x: 30, y: 50, width: 500, height: 50)
+textLayer.frame = CGRect(x: 30, y: 50, width: 370, height: 50)
 view.layer.addSublayer(textLayer)
+
+let square1 = CAShapeLayer()
+let square1Path = UIBezierPath()
+square1Path.move(to: CGPoint(x: 20, y: 50))
+square1Path.addLine(to: CGPoint(x: 380, y: 50))
+square1Path.addLine(to: CGPoint(x: 380, y: 100))
+square1Path.addLine(to: CGPoint(x: 20, y: 100))
+square1Path.addLine(to: CGPoint(x: 20, y: 50))
+square1.path = square1Path.cgPath
+square1.lineWidth = 1
+square1.strokeColor = UIColor.purple.cgColor
+square1.borderColor = UIColor.purple.cgColor
+square1.fillColor = UIColor.clear.cgColor
+layer.addSublayer(square1)
+
+let square2 = CAShapeLayer()
+let square2Path = UIBezierPath()
+square2Path.move(to: CGPoint(x: 130, y: 170))
+square2Path.addLine(to: CGPoint(x: 130, y: 310))
+square2Path.addLine(to: CGPoint(x: 270, y: 310))
+square2Path.addLine(to: CGPoint(x: 270, y: 170))
+square2Path.addLine(to: CGPoint(x: 130, y: 170))
+square2.path = square2Path.cgPath
+square2.lineWidth = 1
+square2.strokeColor = UIColor.purple.cgColor
+square2.borderColor = UIColor.purple.cgColor
+square2.fillColor = UIColor.clear.cgColor
+layer.addSublayer(square2)
+
+let square3 = CAShapeLayer()
+let square3Path = UIBezierPath()
+square3Path.move(to: CGPoint(x: 30, y: 320))
+square3Path.addLine(to: CGPoint(x: 30, y: 370))
+square3Path.addLine(to: CGPoint(x: 80, y: 370))
+square3Path.addLine(to: CGPoint(x: 80, y: 320))
+square3Path.addLine(to: CGPoint(x: 30, y: 320))
+square3.path = square3Path.cgPath
+square3.lineWidth = 1
+square3.strokeColor = UIColor.purple.cgColor
+square3.borderColor = UIColor.purple.cgColor
+square3.fillColor = UIColor.clear.cgColor
+layer.addSublayer(square3)
+
+let square4 = CAShapeLayer()
+let square4Path = UIBezierPath()
+square4Path.move(to: CGPoint(x: 50, y: 350))
+square4Path.addLine(to: CGPoint(x: 50, y: 450))
+square4Path.addLine(to: CGPoint(x: 150, y: 450))
+square4Path.addLine(to: CGPoint(x: 150, y: 350))
+square4Path.addLine(to: CGPoint(x: 50, y: 350))
+square4.path = square4Path.cgPath
+square4.lineWidth = 1.5
+square4.strokeColor = UIColor.purple.cgColor
+square4.borderColor = UIColor.purple.cgColor
+square4.fillColor = UIColor.clear.cgColor
+layer.addSublayer(square4)
+
+let square5 = CAShapeLayer()
+let square5Path = UIBezierPath()
+square5Path.move(to: CGPoint(x: 320, y: 110))
+square5Path.addLine(to: CGPoint(x: 320, y: 200))
+square5Path.addLine(to: CGPoint(x: 370, y: 200))
+square5Path.addLine(to: CGPoint(x: 370, y: 110))
+square5Path.addLine(to: CGPoint(x: 320, y: 110))
+square5.path = square5Path.cgPath
+square5.lineWidth = 1
+square5.strokeColor = UIColor.purple.cgColor
+square5.borderColor = UIColor.purple.cgColor
+square5.fillColor = UIColor.clear.cgColor
+layer.addSublayer(square5)
+
+let square6 = CAShapeLayer()
+let square6Path = UIBezierPath()
+square6Path.move(to: CGPoint(x: 330, y: 160))
+square6Path.addLine(to: CGPoint(x: 330, y: 240))
+square6Path.addLine(to: CGPoint(x: 360, y: 240))
+square6Path.addLine(to: CGPoint(x: 360, y: 160))
+square6Path.addLine(to: CGPoint(x: 330, y: 160))
+square6.path = square6Path.cgPath
+square6.lineWidth = 1.5
+square6.strokeColor = UIColor.purple.cgColor
+square6.borderColor = UIColor.purple.cgColor
+square6.fillColor = UIColor.clear.cgColor
+layer.addSublayer(square6)
+
 
 
 
