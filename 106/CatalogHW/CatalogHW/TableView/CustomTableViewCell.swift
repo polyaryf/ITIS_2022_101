@@ -24,24 +24,25 @@ class CustomTableViewCell: UITableViewCell {
     private let numberOfTracksLabel: UILabel = .init()
     private let totalDurationLabel: UILabel = .init()
     private let isDownloadedImage: UIImageView = .init()
-    private let coverImage: UIImageView = .init()
-    
+    private let coverImageView: UIImageView = .init()
+
     func set(playlist: Playlist) {
         titleLabel.text = playlist.playlistTitle
-        numberOfTracksLabel.text = String(playlist.numberOfTracks)
-        totalDurationLabel.text = String(playlist.totalDuration)
+        numberOfTracksLabel.text = "\(playlist.numberOfTracks) tracks"
+        totalDurationLabel.text = "Duration: \(playlist.totalDuration)"
+        isDownloadedImage.tintColor = .gray
         if playlist.isDownloaded {
             isDownloadedImage.image = UIImage(systemName: "square.and.arrow.down.fill")
         } else {
             isDownloadedImage.image = UIImage(systemName: "square.and.arrow.down")
         }
-        coverImage.image = UIImage(named: "playlistCover1")
+        coverImageView.image = UIImage(named: "title\(Int.random(in: 1...11))")
     }
     
     private func setup() {
-        titleLabel.font = .systemFont(ofSize: 25)
-        numberOfTracksLabel.font = .systemFont(ofSize: 15)
-        totalDurationLabel.font = .systemFont(ofSize: 15)
+        titleLabel.font = .systemFont(ofSize: 20)
+        numberOfTracksLabel.font = .systemFont(ofSize: 12)
+        totalDurationLabel.font = .systemFont(ofSize: 12)
         let labelsStackView = UIStackView(
             arrangedSubviews: [ titleLabel, numberOfTracksLabel, totalDurationLabel]
         )
@@ -49,12 +50,11 @@ class CustomTableViewCell: UITableViewCell {
         labelsStackView.axis = .vertical
         
         let stackView = UIStackView(
-            arrangedSubviews: [ coverImage, labelsStackView, isDownloadedImage]
+            arrangedSubviews: [ coverImageView, labelsStackView, isDownloadedImage]
         )
         stackView.spacing = 20
         stackView.axis = .horizontal
         stackView.alignment = .center
-        
         
         contentView.addSubview(stackView)
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -65,10 +65,10 @@ class CustomTableViewCell: UITableViewCell {
             stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 15),
             stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -15),
-            coverImage.widthAnchor.constraint(equalToConstant: 110),
-            coverImage.heightAnchor.constraint(equalToConstant: 110),
-            isDownloadedImage.widthAnchor.constraint(equalToConstant: 30),
-            isDownloadedImage.heightAnchor.constraint(equalToConstant: 30)
+            coverImageView.widthAnchor.constraint(equalToConstant: 100),
+            coverImageView.heightAnchor.constraint(equalToConstant: 100),
+            isDownloadedImage.widthAnchor.constraint(equalToConstant: 25),
+            isDownloadedImage.heightAnchor.constraint(equalToConstant: 25)
         ])
     }
 }

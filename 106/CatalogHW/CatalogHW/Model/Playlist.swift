@@ -21,7 +21,7 @@ struct Playlist {
     let allSongs: [Song]
     
     public static func randomPlaylist() -> Playlist {
-        let randomSongs = randomSongs()
+        let randomSongs = randomSongs(countOfSongs: Int.random(in: 3...9))
         let randomPlaylist = Playlist(
             playlistTitle: randomPlaylistTitle(),
             numberOfTracks: randomSongs.count,
@@ -40,8 +40,8 @@ struct Playlist {
         return totalDuration
     }
     
-    private static func randomSongs() -> [Song] {
-        let songRepository = [
+    public static func randomSong() -> Song {
+        [
             Song(songTitle: "Protein", author: "Jeshi, Obongjayar", duration: 2.53),
             Song(songTitle: "Tainted Love", author: "Milky Chance", duration: 2.57),
             Song(songTitle: "Notion", author: "The Rare Occasions", duration: 3.15),
@@ -53,21 +53,23 @@ struct Playlist {
             Song(songTitle: "Как тебя покорить", author: "Перемотка", duration: 3.33),
             Song(songTitle: "что для тебя красота", author: "масло черного тмина", duration: 1.55)
         ]
+        .randomElement() ?? Song(songTitle: "", author: "", duration: 0)
+    }
+    
+    public static func randomSongs(countOfSongs: Int) -> [Song] {
         var randomSongs: [Song] = []
-        let countOfSongs = Int.random(in: 1...4)
         for _ in 0...countOfSongs {
-            randomSongs.append(songRepository.randomElement()
-                               ?? Song(songTitle: "Пук-пук", author: "", duration: 0))
+            randomSongs.append(randomSong())
         }
         return randomSongs
     }
     
     private static func randomPlaylistTitle() -> String {
-      let letters = "abcdefghijklmnopqrstuvwxyzUVWXYZ0 "
-      return String(
-        (0 ..< 8).map { _ in
-            letters.randomElement() ?? " " }
-      )
+        let letters = "abcdefghijklmnopqrstuvwxyzUVWXYZ0 "
+        return String(
+            (0 ..< 8).map { _ in
+                letters.randomElement() ?? " " }
+        )
     }
 }
 
