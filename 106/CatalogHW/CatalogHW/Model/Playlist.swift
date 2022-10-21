@@ -5,8 +5,6 @@
 //  Created by Полина Рыфтина on 19.10.2022.
 //
 
-import Foundation
-
 struct Song {
     let songTitle: String
     let author: String
