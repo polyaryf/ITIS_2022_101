@@ -150,7 +150,6 @@ extension TableViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let descriptionVC = DescriptionViewController()
-        let curCell = tableView.cellForRow(at: indexPath) as? CustomTableViewCell
         descriptionVC.playlist = playlists[indexPath.row]
         present(descriptionVC, animated: true)
     }

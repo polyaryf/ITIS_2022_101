@@ -40,10 +40,11 @@ class DescriptionViewController: UIViewController {
         let songs = playlist?.allSongs ?? []
         for song in songs {
             let songStackView = UIStackView()
-            songStackView.spacing = 5
-            songStackView.axis = .vertical
             let titleSongLabel = UILabel()
             let authorSongLabel = UILabel()
+            
+            songStackView.spacing = 5
+            songStackView.axis = .vertical
             titleSongLabel.text = "\(song.songTitle)"
             authorSongLabel.text = "\(song.author)"
             titleSongLabel.font = .systemFont(ofSize: 16)
@@ -70,6 +71,5 @@ class DescriptionViewController: UIViewController {
             stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             stackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 30)
         ])
-        
     }
 }

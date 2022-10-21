@@ -41,6 +41,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		297A16B629030236000145DC /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				29BF1CC32901445A00CD6516 /* DescriptionViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
 		298016CE28FFEEF1003532EA /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -68,6 +76,7 @@
 		29B7F96128FE9B25000229C7 /* CatalogHW */ = {
 			isa = PBXGroup;
 			children = (
+				297A16B629030236000145DC /* ViewControllers */,
 				298016CE28FFEEF1003532EA /* Model */,
 				29B7F97628FE9C98000229C7 /* TableView */,
 				29B7F96228FE9B25000229C7 /* AppDelegate.swift */,
@@ -75,7 +84,6 @@
 				29B7F96B28FE9B26000229C7 /* Assets.xcassets */,
 				29B7F96D28FE9B26000229C7 /* LaunchScreen.storyboard */,
 				29B7F97028FE9B26000229C7 /* Info.plist */,
-				29BF1CC32901445A00CD6516 /* DescriptionViewController.swift */,
 			);
 			path = CatalogHW;
 			sourceTree = "<group>";
