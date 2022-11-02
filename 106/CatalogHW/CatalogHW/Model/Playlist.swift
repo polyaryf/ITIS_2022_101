@@ -34,7 +34,7 @@ struct Playlist {
         for song in songs {
             totalDuration += song.duration
         }
-        totalDuration = round(totalDuration * 100)/100
+        totalDuration = round(totalDuration * 100) / 100
         return totalDuration
     }
     
