@@ -17,7 +17,6 @@ class UpsetCatViewCell: UICollectionViewCell {
     
     private lazy var textLabel: UILabel = {
         let text = UILabel()
-        text.contentMode = .center
         text.font = .boldSystemFont(ofSize: 20)
         text.backgroundColor = .lightGray
         text.textColor = .darkGray
@@ -34,20 +33,25 @@ class UpsetCatViewCell: UICollectionViewCell {
         super.init(frame: .zero)
         
         contentView.addSubview(imageView)
+        contentView.contentMode = .bottomLeft
         imageView.addSubview(textLabel)
+        setConstraint()
         
-        NSLayoutConstraint.activate([
-            imageView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            imageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            textLabel.bottomAnchor.constraint(equalTo: imageView.bottomAnchor, constant: -12),
-            textLabel.leadingAnchor.constraint(equalTo: imageView.leadingAnchor, constant: 12)
-        ])
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func setConstraint() {
+        NSLayoutConstraint.activate([
+            imageView.topAnchor.constraint(equalTo: topAnchor),
+            imageView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            imageView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            imageView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            textLabel.bottomAnchor.constraint(equalTo: imageView.bottomAnchor, constant: -12),
+            textLabel.leadingAnchor.constraint(equalTo: imageView.leadingAnchor, constant: 12)
+        ])
     }
     
     private var dataTask: URLSessionDataTask?

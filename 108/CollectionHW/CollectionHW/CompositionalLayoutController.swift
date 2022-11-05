@@ -136,18 +136,18 @@ class CompositionalLayoutController: UIViewController, UICollectionViewDataSourc
     }
     
     private let usetCatsImages: [UpsetCat] = [
-        .init(name: "Steve", url: URL(string: "https://a.pinatafarm.com/312x296/ae7f8ccd22/sad-thumbs-up-cat.jpg")!),
-        .init(name: "Steve", url: URL(string: "https://i.imgflip.com/5n88b8.jpg")!),
-        .init(name: "Steve", url: URL(string: "https://www.meme-arsenal.com/memes/d7437d8b4e4cca9c4dfd14590798440d.jpg")!),
-        .init(name: "Steve", url: URL(string: "https://cdn.kapwing.com/video_image-T3rRLSM4t.jpg")!),
-        .init(name: "Steve", url: URL(string: "https://assets.stickpng.com/images/5ee772d099588c0004aa684b.png")!),
-        .init(name: "Steve", url: URL(string: "https://i.pinimg.com/736x/72/5f/84/725f8484bc1567944c17b208b8871759.jpg")!),
-        .init(name: "Steve", url: URL(string: "https://www.meme-arsenal.com/memes/f04ebf47a09312cbedfca22256c5722d.jpg")!),
-        .init(name: "Steve", url: URL(string: "https://i.pinimg.com/originals/6a/04/9f/6a049fedf32ee207c22245b59e244e0c.jpg")!),
-        .init(name: "Steve", url: URL(string: "https://i.imgur.com/pGpb0WC.jpg")!),
-        .init(name: "Steve", url: URL(string: "https://i.pinimg.com/550x/cb/99/27/cb99275b388b88aba3b419abcba11aff.jpg")!),
-        .init(name: "Steve", url: URL(string: "https://i.imgflip.com/458xfx.jpg")!),
-        .init(name: "Steve", url: URL(string: "https://www.meme-arsenal.com/memes/15e151362eec0276dbccc11f0fe40fc8.jpg")!)
+        .init(name: "cat1", url: URL(string: "https://a.pinatafarm.com/312x296/ae7f8ccd22/sad-thumbs-up-cat.jpg")!),
+        .init(name: "cat2", url: URL(string: "https://i.imgflip.com/5n88b8.jpg")!),
+        .init(name: "cat3", url: URL(string: "https://www.meme-arsenal.com/memes/d7437d8b4e4cca9c4dfd14590798440d.jpg")!),
+        .init(name: "cat4", url: URL(string: "https://cdn.kapwing.com/video_image-T3rRLSM4t.jpg")!),
+        .init(name: "cat5", url: URL(string: "https://assets.stickpng.com/images/5ee772d099588c0004aa684b.png")!),
+        .init(name: "cat6", url: URL(string: "https://i.pinimg.com/736x/72/5f/84/725f8484bc1567944c17b208b8871759.jpg")!),
+        .init(name: "cat7", url: URL(string: "https://www.meme-arsenal.com/memes/f04ebf47a09312cbedfca22256c5722d.jpg")!),
+        .init(name: "cat8", url: URL(string: "https://i.pinimg.com/originals/6a/04/9f/6a049fedf32ee207c22245b59e244e0c.jpg")!),
+        .init(name: "cat9", url: URL(string: "https://i.imgur.com/pGpb0WC.jpg")!),
+        .init(name: "cat10", url: URL(string: "https://i.pinimg.com/550x/cb/99/27/cb99275b388b88aba3b419abcba11aff.jpg")!),
+        .init(name: "cat11", url: URL(string: "https://i.imgflip.com/458xfx.jpg")!),
+        .init(name: "cat12", url: URL(string: "https://www.meme-arsenal.com/memes/15e151362eec0276dbccc11f0fe40fc8.jpg")!)
     ]
     
     private let happyCatsImages: [URL] = [
