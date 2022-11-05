@@ -24,19 +24,28 @@ class HappyCatCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: .zero)
         
-        contentView.addSubview(imageView)
+        setup()
+        setConstraint()
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
         
+        setup()
+        setConstraint()
+    }
+    
+    private func setup() {
+        contentView.addSubview(imageView)
+    }
+    
+    private func setConstraint() {
         NSLayoutConstraint.activate([
             imageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 25),
             imageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -25),
             imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
             imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10)
         ])
-        
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
     
     private var dataTask: URLSessionDataTask?

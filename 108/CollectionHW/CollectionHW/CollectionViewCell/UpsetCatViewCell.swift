@@ -18,67 +18,90 @@ class UpsetCatViewCell: UICollectionViewCell {
     private lazy var textLabel: UILabel = {
         let text = UILabel()
         text.font = .boldSystemFont(ofSize: 20)
-        text.backgroundColor = .lightGray
-        text.textColor = .darkGray
+        text.textColor = .white
         text.translatesAutoresizingMaskIntoConstraints = false
         return text
     }()
     
-    func set(text: String, imageUrl: URL) {
-        textLabel.text = text
-        loadImage(url: imageUrl)
+    var loadingTask: Task<Void, Never>?
+    
+    func set(image: CompositionalLayoutController.UpsetCatImage) {
+        loadingTask?.cancel()
+        loadingTask = Task {
+            await loadImage(url: image.url)
+        }
+        textLabel.text = image.name
     }
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
         
-        contentView.addSubview(imageView)
-        contentView.contentMode = .bottomLeft
-        imageView.addSubview(textLabel)
-        setConstraint()
-        
+        setup()
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: coder)
+        
+        setup()
+    }
+    
+    private func setup() {
+        contentView.addSubview(imageView)
+        contentView.addSubview(textLabel)
+        
+        setConstraint()
     }
     
     private func setConstraint() {
         NSLayoutConstraint.activate([
-            imageView.topAnchor.constraint(equalTo: topAnchor),
-            imageView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            imageView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            imageView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            textLabel.bottomAnchor.constraint(equalTo: imageView.bottomAnchor, constant: -12),
-            textLabel.leadingAnchor.constraint(equalTo: imageView.leadingAnchor, constant: 12)
+            imageView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            imageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            textLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12),
+            textLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            textLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12),
         ])
+        setupDefaultRatio()
     }
     
-    private var dataTask: URLSessionDataTask?
-
-    private func loadImage(url: URL) {
+    private var aspectRatioConstraint: NSLayoutConstraint?
+    
+    private func setupDefaultRatio() {
+        aspectRatioConstraint?.isActive = false
+        aspectRatioConstraint = imageView.widthAnchor.constraint(
+            equalTo: imageView.heightAnchor, multiplier: 1
+        )
+        aspectRatioConstraint?.isActive = true
+    }
+    
+    private func setupRatio(for image: UIImage) {
+        aspectRatioConstraint?.isActive = false
+        aspectRatioConstraint = imageView
+            .widthAnchor.constraint(
+                    equalTo: imageView.heightAnchor,
+                    multiplier:  image.size.width / image.size.height
+            )
+        aspectRatioConstraint?.isActive = true
+    }
+    
+    @MainActor
+    private func loadImage(url: URL) async{
+        setupDefaultRatio()
+        
         imageView.image = nil
-        dataTask?.cancel()
         let urlRequest = URLRequest(
             url: url,
             cachePolicy: .returnCacheDataElseLoad
         )
-        dataTask = URLSession.shared
-            .dataTask(with: urlRequest) { [imageView] data, _, _ in
-                guard let data else {
-                    print("could not load image")
-                    return
-                }
-                let image = UIImage(data: data)
-                DispatchQueue.main.async { [imageView] in
-                    guard let image else { return }
-                    imageView.image = image
-                }
-            }
-        dataTask?.resume()
+        do {
+            let (data, _) = try await URLSession.shared.data(for: urlRequest)
+            guard !Task.isCancelled else { return }
+            guard let image = UIImage(data: data) else { return }
+            imageView.image = image
+            setupRatio(for: image)
+        } catch {
+            print("could not load image")
+        }
     }
 }
-
-    
- 
-
